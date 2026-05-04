@@ -1,0 +1,190 @@
+<main class="mx-auto max-w-[var(--container)] px-2 pb-8 pt-2 sm:px-4 sm:pb-10">
+	<section class="hero-shell overflow-hidden rounded-[1.5rem] border border-[var(--c-border)]">
+		<div
+			class="grid gap-6 bg-[var(--c-bg-secondary)] p-4 sm:p-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:items-center"
+		>
+			<div class="space-y-5">
+				<p
+					class="inline-flex rounded-full bg-[color:rgba(197,61,61,0.12)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				>
+					{{ dish().categoryName | translate }}
+				</p>
+
+				<div class="space-y-3">
+					<h1
+						class="max-w-[14ch] text-3xl font-semibold leading-tight text-[var(--c-text-secondary)] sm:text-5xl"
+					>
+						{{ dish().name | translate }}
+					</h1>
+
+					@if (dish().hasDescription) {
+						<p
+							class="max-w-2xl text-sm leading-6 text-[var(--c-text-primary)] sm:text-[15px]"
+						>
+							{{ dish().description | translate }}
+						</p>
+					}
+				</div>
+
+				<div class="flex flex-wrap items-center gap-3">
+					<p class="text-3xl font-semibold leading-none text-[var(--c-secondary)]">
+						@if (dish().price === null) {
+							{{ 'Ask for price' | translate }}
+						} @else {
+							{{ dish().price }} â‚¬
+						}
+					</p>
+				</div>
+
+				@if (dish().labels.length) {
+					<div class="flex flex-wrap gap-2">
+						@for (label of dish().labels; track label) {
+							<span
+								class="rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] px-3 py-1 text-xs font-medium text-[var(--c-text-primary)]"
+							>
+								{{ label | translate }}
+							</span>
+						}
+					</div>
+				}
+
+				<div class="flex flex-wrap gap-3 pt-1">
+					<a class="ui-btn ui-btn-primary" routerLink="/">
+						{{ 'Browse full menu' | translate }}
+					</a>
+					<button
+						class="ui-btn ui-btn-secondary"
+						[attr.aria-label]="
+							(isFavorite() ? 'Remove from favorites' : 'Add to favorites') | translate
+						"
+						(click)="toggleFavorite()"
+						type="button"
+					>
+						{{ (isFavorite() ? 'Remove from favorites' : 'Add to favorites') | translate }}
+					</button>
+				</div>
+			</div>
+
+			<div class="relative">
+				<div class="hero-glow absolute inset-0 rounded-[1.4rem]"></div>
+				<img
+					class="relative z-[1] h-[20rem] w-full rounded-[1.4rem] object-cover shadow-[var(--shadow-md)] sm:h-[26rem]"
+					[src]="'/item/' + dish().slug + '.webp'"
+					[attr.alt]="dish().name | translate"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
+		<div class="space-y-4">
+			@if (dish().hasFullDescription) {
+				<article
+					class="rounded-[1.3rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] p-4 sm:p-5"
+				>
+					<div class="flex items-center gap-3">
+						<div
+							class="h-px flex-1 border-t border-dashed border-[var(--c-border)]"
+						></div>
+						<p
+							class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+						>
+							{{ 'About dish' | translate }}
+						</p>
+						<div
+							class="h-px flex-1 border-t border-dashed border-[var(--c-border)]"
+						></div>
+					</div>
+
+					<p class="mt-4 text-[15px] leading-7 text-[var(--c-text-primary)]">
+						{{ dish().fullDescription | translate }}
+					</p>
+				</article>
+			}
+
+			<article
+				class="rounded-[1.3rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] p-4 sm:p-5"
+			>
+				<div class="flex items-center justify-between gap-3">
+					<h2 class="text-xl font-semibold text-[var(--c-text-secondary)]">
+						{{ 'Dish details' | translate }}
+					</h2>
+				</div>
+
+				<div class="mt-4 grid gap-3 sm:grid-cols-2">
+					@for (fact of dish().facts; track fact.label) {
+						<div class="rounded-[1rem] bg-[var(--c-bg-primary)] p-4">
+							<p
+								class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c-text-muted)]"
+							>
+								{{ fact.label | translate }}
+							</p>
+							<p class="mt-2 text-sm leading-6 text-[var(--c-text-secondary)]">
+								@if (fact.translatedValue) {
+									{{ fact.translatedValue | translate }}
+								} @else if (fact.value) {
+									{{ fact.value }}
+								} @else {
+									{{ fact.fallbackValue! | translate }}
+								}
+							</p>
+						</div>
+					}
+				</div>
+			</article>
+		</div>
+
+		<aside
+			class="rounded-[1.3rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] p-4 sm:p-5"
+		>
+			<div class="flex items-center justify-between gap-3">
+				<h2 class="text-xl font-semibold text-[var(--c-text-secondary)]">
+					{{ 'Pairs well with' | translate }}
+				</h2>
+				<span class="text-xs uppercase tracking-[0.16em] text-[var(--c-text-muted)]">
+					{{ 'Chef picks' | translate }}
+				</span>
+			</div>
+
+			<div class="mt-4 space-y-3">
+				@for (suggestion of dish().suggestions; track suggestion.slug) {
+					<a
+						class="block rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-3 transition-transform duration-200 hover:-translate-y-0.5"
+						[routerLink]="['/dish', suggestion.slug]"
+					>
+						<div class="flex gap-3">
+							<img
+								class="h-20 w-20 shrink-0 rounded-[0.9rem] object-cover"
+								[src]="'/item/' + suggestion.slug + '.webp'"
+								[attr.alt]="suggestion.name | translate"
+								loading="lazy"
+							/>
+
+							<div class="min-w-0">
+								<h3
+									class="line-clamp-2 text-sm font-semibold leading-5 text-[var(--c-text-secondary)]"
+								>
+									{{ suggestion.name | translate }}
+								</h3>
+								<p class="mt-1 text-sm font-semibold text-[var(--c-secondary)]">
+									@if (suggestion.price === null) {
+										{{ 'Ask for price' | translate }}
+									} @else {
+										{{ suggestion.price }} â‚¬
+									}
+								</p>
+								@if (suggestion.hasDescription) {
+									<p
+										class="mt-1 line-clamp-3 text-xs leading-5 text-[var(--c-text-primary)]"
+									>
+										{{ suggestion.description | translate }}
+									</p>
+								}
+							</div>
+						</div>
+					</a>
+				}
+			</div>
+		</aside>
+	</section>
+</main>

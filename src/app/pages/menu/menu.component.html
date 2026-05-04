@@ -1,0 +1,41 @@
+<main class="mx-auto max-w-[var(--container)] px-2 pb-8 pt-2 sm:px-4 sm:pb-10">
+	<h1 class="sr-only">
+		{{ (showOnlyFavorites ? 'Favorites' : 'Menu') | translate }}
+	</h1>
+
+	@if (!showOnlyFavorites || !!dishService.favoriteDishes().length) {
+		<app-menu-categories
+			[filteredCategories]="filteredCategories()"
+			[filteredSelectedCategories]="filteredSelectedCategories()"
+		/>
+
+		<app-menu-dishes [selectedCategories]="filteredSelectedCategories()" />
+	} @else {
+		<section
+			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined text-[28px]" aria-hidden="true"
+					>favorite</span
+				>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+			>
+				{{ 'Favorites' | translate }}
+			</p>
+			<h1 class="mt-2 text-xl font-semibold text-[var(--c-text-secondary)]">
+				{{ 'No saved dishes' | translate }}
+			</h1>
+			<p class="mx-auto mt-2 max-w-[28rem] text-sm leading-6 text-[var(--c-text-muted)]">
+				{{ 'Add items from the menu to favorites, and they will appear here.' | translate }}
+			</p>
+			<a routerLink="/" class="ui-btn ui-btn-primary mt-6 min-w-40">
+				{{ 'Browse full menu' | translate }}
+			</a>
+		</section>
+	}
+</main>

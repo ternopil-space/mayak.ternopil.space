@@ -1,0 +1,22 @@
+:host {
+	display: block;
+}
+
+:host(:not(:last-child)) article {
+	border-bottom: 1px solid var(--c-border);
+}
+
+.line-clamp-2,
+.line-clamp-3 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp-2 {
+	-webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+	-webkit-line-clamp: 3;
+}

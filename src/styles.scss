@@ -1,0 +1,65 @@
+@use 'tailwindcss';
+@use './styles/theme';
+
+@layer components {
+	.ui-btn {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		border-radius: var(--radius-btn);
+		padding: 0.75rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		line-height: 1.25rem;
+		text-align: center;
+		transition:
+			background-color var(--motion),
+			border-color var(--motion),
+			color var(--motion),
+			box-shadow var(--motion),
+			opacity var(--motion);
+	}
+
+	.ui-btn:focus-visible {
+		outline: none;
+		box-shadow: var(--focus-ring);
+	}
+
+	.ui-btn-primary {
+		background: var(--c-secondary);
+		color: var(--c-bg-primary);
+	}
+
+	.ui-btn-primary:hover {
+		background: var(--c-secondary-hover);
+	}
+
+	.ui-btn-secondary {
+		border: 1px solid var(--c-border);
+		background: var(--c-bg-primary);
+		color: var(--c-text-secondary);
+	}
+
+	.ui-btn-secondary:hover {
+		border-color: var(--c-secondary);
+		background: var(--c-bg-tertiary);
+		color: var(--c-secondary);
+	}
+}
+
+html,
+body {
+	background: var(--c-bg-primary);
+	color: var(--c-text-primary);
+	font-family: var(--ff-base);
+	font-size: var(--fs);
+	letter-spacing: var(--letter-spacing);
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+}
+
+@plugin "@tailwindcss/typography";

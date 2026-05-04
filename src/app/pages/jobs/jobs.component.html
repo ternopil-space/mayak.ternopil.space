@@ -1,0 +1,153 @@
+<main class="mx-auto max-w-[var(--container)] px-3 pb-8 pt-3 sm:px-4 sm:pb-10">
+	@if (isLoading()) {
+		<section
+			class="rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+			aria-busy="true"
+			aria-live="polite"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined animate-pulse text-[28px]" aria-hidden="true">
+					work_history
+				</span>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Jobs
+			</p>
+			<p class="mt-2 text-sm text-[var(--c-text-muted)]" translate>Loading jobs...</p>
+		</section>
+	} @else if (jobs().length) {
+		<section
+			class="overflow-hidden rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+		>
+			<div
+				class="border-b border-[var(--c-border)] bg-[linear-gradient(135deg,rgba(197,61,61,0.14),rgba(217,168,88,0.08))] px-4 py-5 sm:px-5"
+			>
+				<p
+					class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+					translate
+				>
+					Jobs
+				</p>
+				<h1 class="mt-2 text-2xl font-semibold text-[var(--c-text-secondary)]" translate>
+					Jobs
+				</h1>
+			</div>
+
+			<div class="grid gap-3 p-3 sm:grid-cols-2 sm:p-4 xl:grid-cols-3">
+				@for (job of jobs(); track job.slug) {
+					<article
+						class="flex h-full flex-col rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-4"
+					>
+						<div class="space-y-3">
+							<h2 class="text-lg font-semibold text-[var(--c-text-secondary)]">
+								{{ job.title | translate }}
+							</h2>
+
+							@if (job.summary) {
+								<p class="text-sm leading-6 text-[var(--c-text-muted)]">
+									{{ job.summary | translate }}
+								</p>
+							}
+
+							<div class="flex flex-wrap gap-2 text-xs font-medium text-[var(--c-text-muted)]">
+								@if (job.location) {
+									<span class="rounded-full border border-[var(--c-border)] px-3 py-1">
+										{{ job.location | translate }}
+									</span>
+								}
+								@if (job.employmentType) {
+									<span class="rounded-full border border-[var(--c-border)] px-3 py-1">
+										{{ job.employmentType | translate }}
+									</span>
+								}
+								@if (job.schedule) {
+									<span class="rounded-full border border-[var(--c-border)] px-3 py-1">
+										{{ job.schedule | translate }}
+									</span>
+								}
+								@if (job.experience) {
+									<span class="rounded-full border border-[var(--c-border)] px-3 py-1">
+										{{ job.experience | translate }}
+									</span>
+								}
+							</div>
+						</div>
+
+						<div class="mt-4 space-y-3 border-t border-[var(--c-border)] pt-4">
+							@if (job.salary) {
+								<p class="text-sm font-semibold text-[var(--c-text-secondary)]">
+									{{ job.salary | translate }}
+								</p>
+							}
+
+							@if (job.applyUrl) {
+								<a
+									class="ui-btn ui-btn-primary min-w-40"
+									[href]="job.applyUrl"
+									target="_blank"
+									rel="noreferrer"
+								>
+									{{ (job.applyLabel || job.applyUrl)! | translate }}
+								</a>
+							}
+
+							@if (job.contactEmail || job.contactPhone) {
+								<div class="space-y-1 text-sm text-[var(--c-text-muted)]">
+									@if (job.contactEmail) {
+										<a
+											class="block underline-offset-4 hover:underline"
+											[href]="'mailto:' + job.contactEmail"
+										>
+											{{ job.contactEmail }}
+										</a>
+									}
+									@if (job.contactPhone) {
+										<a
+											class="block underline-offset-4 hover:underline"
+											[href]="'tel:' + job.contactPhone"
+										>
+											{{ job.contactPhone }}
+										</a>
+									}
+								</div>
+							}
+						</div>
+					</article>
+				}
+			</div>
+		</section>
+	} @else {
+		<section
+			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined text-[28px]" aria-hidden="true">work</span>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Jobs
+			</p>
+
+			<h1 class="mt-2 text-xl font-semibold text-[var(--c-text-secondary)]" translate>
+				No job openings at the moment
+			</h1>
+			<p
+				class="mx-auto mt-2 max-w-[28rem] text-sm leading-6 text-[var(--c-text-muted)]"
+				translate
+			>
+				Stay tuned for updates
+			</p>
+		</section>
+	}
+</main>

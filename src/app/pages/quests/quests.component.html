@@ -1,0 +1,124 @@
+<main class="mx-auto max-w-[var(--container)] px-3 pb-8 pt-3 sm:px-4 sm:pb-10">
+	@if (isLoading()) {
+		<section
+			class="rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+			aria-busy="true"
+			aria-live="polite"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined animate-pulse text-[28px]" aria-hidden="true">
+					explore
+				</span>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Quests
+			</p>
+			<p class="mt-2 text-sm text-[var(--c-text-muted)]" translate>Loading quests...</p>
+		</section>
+	} @else if (quests().length) {
+		<section
+			class="overflow-hidden rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+		>
+			<div
+				class="border-b border-[var(--c-border)] bg-[linear-gradient(135deg,rgba(197,61,61,0.14),rgba(217,168,88,0.08))] px-4 py-5 sm:px-5"
+			>
+				<p
+					class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+					translate
+				>
+					Quests
+				</p>
+				<h1 class="mt-2 text-2xl font-semibold text-[var(--c-text-secondary)]">
+					{{ 'Quests and interactive activities' | translate }}
+				</h1>
+			</div>
+
+			<div class="grid gap-3 p-3 sm:grid-cols-2 sm:p-4 xl:grid-cols-3">
+				@for (quest of quests(); track quest.slug) {
+					<article
+						class="flex h-full flex-col rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-4"
+					>
+						<div class="space-y-3">
+							<div class="flex items-start justify-between gap-3">
+								<div>
+									@if (quest.format) {
+										<p
+											class="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--c-secondary)]"
+										>
+											{{ quest.format | translate }}
+										</p>
+									}
+									<h2 class="mt-1 text-lg font-semibold text-[var(--c-text-secondary)]">
+										{{ quest.title | translate }}
+									</h2>
+								</div>
+
+								@if (quest.duration) {
+									<span
+										class="rounded-full border border-[var(--c-border)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c-secondary)]"
+									>
+										{{ quest.duration | translate }}
+									</span>
+								}
+							</div>
+
+							@if (quest.summary) {
+								<p class="text-sm leading-6 text-[var(--c-text-muted)]">
+									{{ quest.summary | translate }}
+								</p>
+							}
+						</div>
+
+						<div class="mt-4 space-y-3 border-t border-[var(--c-border)] pt-4">
+							@if (quest.price) {
+								<p class="text-base font-semibold text-[var(--c-text-secondary)]">
+									{{ quest.price | translate }}
+								</p>
+							}
+
+							@if (quest.ctaHref) {
+								<a
+									class="ui-btn ui-btn-primary min-w-40"
+									[href]="quest.ctaHref"
+									[target]="quest.ctaHref.startsWith('http') ? '_blank' : null"
+									[rel]="quest.ctaHref.startsWith('http') ? 'noreferrer' : null"
+								>
+									{{ (quest.ctaLabel || 'Learn more') | translate }}
+								</a>
+							}
+						</div>
+					</article>
+				}
+			</div>
+		</section>
+	} @else {
+		<section
+			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined text-[28px]" aria-hidden="true">explore</span>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Quests
+			</p>
+			<h1 class="mt-2 text-xl font-semibold text-[var(--c-text-secondary)]" translate>
+				There are currently no quests
+			</h1>
+			<p class="mx-auto mt-2 max-w-[28rem] text-sm leading-6 text-[var(--c-text-muted)]" translate>
+				Check back later for new activities and special offers.
+			</p>
+		</section>
+	}
+</main>

@@ -1,0 +1,36 @@
+:host {
+	display: block;
+	background:
+		radial-gradient(circle at top left, rgba(197, 61, 61, 0.16), transparent 28rem),
+		linear-gradient(180deg, var(--c-bg-primary), var(--c-bg-primary));
+	color: var(--c-text-primary);
+}
+
+.hero-shell {
+	background:
+		linear-gradient(135deg, rgba(197, 61, 61, 0.08), transparent 48%),
+		linear-gradient(180deg, var(--c-bg-secondary), var(--c-bg-secondary));
+}
+
+.hero-glow {
+	background:
+		radial-gradient(circle at 15% 15%, rgba(197, 61, 61, 0.26), transparent 34%),
+		radial-gradient(circle at 85% 80%, rgba(37, 110, 255, 0.18), transparent 32%);
+	filter: blur(10px);
+	transform: scale(1.02);
+}
+
+.line-clamp-2,
+.line-clamp-3 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp-2 {
+	-webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+	-webkit-line-clamp: 3;
+}

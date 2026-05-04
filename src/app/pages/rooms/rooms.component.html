@@ -1,0 +1,203 @@
+<main class="mx-auto max-w-[var(--container)] px-3 pb-10 pt-3 sm:px-4 sm:pb-12">
+	@if (isLoading()) {
+		<section
+			class="rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+			aria-busy="true"
+			aria-live="polite"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined animate-pulse text-[28px]" aria-hidden="true">
+					hotel
+				</span>
+			</div>
+
+			<p class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]">
+				{{ 'Rooms' | translate }}
+			</p>
+			<p class="mt-2 text-sm text-[var(--c-text-muted)]">{{ 'Loading rooms...' | translate }}</p>
+		</section>
+	} @else if (hasRooms()) {
+		<section
+			class="rooms-shell overflow-hidden rounded-[1.5rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+		>
+			<div class="grid gap-0 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+				<div class="relative min-h-[18rem] lg:min-h-[30rem]">
+					<img
+						class="object-cover"
+						ngSrc="room/room-1.webp"
+						[alt]="'Horeca demo hotel room' | translate"
+						fill
+						priority
+						sizes="(max-width: 1023px) 100vw, 60vw"
+					/>
+				</div>
+
+				<div class="flex flex-col justify-center px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+					<p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]">
+						{{ 'Rooms' | translate }}
+					</p>
+					<h1 class="mt-3 text-[2rem] font-semibold leading-tight text-[var(--c-text-secondary)] sm:text-[2.4rem]">
+						{{ 'Demo rooms page for HoReCa businesses' | translate }}
+					</h1>
+					<p class="mt-4 text-sm leading-7 text-[var(--c-text-muted)]">
+						{{
+							'This section can be adapted for a hotel, hotel and restaurant complex, guest house, apartment hotel, or countryside retreat.'
+								| translate
+						}}
+					</p>
+					<p class="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">
+						{{
+							'Show room categories, key amenities, photos, prices, and a quick way for guests to book.'
+								| translate
+						}}
+					</p>
+					<p class="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">
+						{{ 'Room rates from' | translate }}
+						<span class="font-semibold text-[var(--c-text-secondary)]">
+							{{ 'from UAH 1800/night' | translate }}
+						</span>.
+					</p>
+				</div>
+			</div>
+
+			<div class="border-t border-[var(--c-border)] px-4 py-6 sm:px-6 lg:px-8">
+				<div class="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+					<div>
+						<h2 class="text-lg font-semibold text-[var(--c-text-secondary)]">
+							{{ 'What is available for guests' | translate }}
+						</h2>
+						<p class="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">
+							{{
+								'Add the services that matter for your property: breakfast, restaurant, parking, spa, conference hall, transfer, or pet-friendly stays.'
+									| translate
+							}}
+						</p>
+					</div>
+
+					<div class="grid gap-3 sm:grid-cols-2">
+						@for (amenity of amenities; track amenity) {
+							<div
+								class="amenity-chip rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] px-4 py-3 text-sm text-[var(--c-text-secondary)]"
+							>
+								{{ amenity | translate }}
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+
+			<div class="border-t border-[var(--c-border)] px-4 py-6 sm:px-6 lg:px-8">
+				<div class="grid gap-5 xl:grid-cols-3">
+					@for (room of rooms(); track room.name) {
+						<article
+							class="room-card overflow-hidden rounded-[1.35rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)]"
+						>
+							<div class="relative min-h-[15rem]">
+								<img
+									class="object-cover"
+									[ngSrc]="room.image"
+									[alt]="room.imageAlt | translate"
+									fill
+									sizes="(max-width: 1279px) 100vw, 34vw"
+								/>
+							</div>
+
+							<div class="p-5 sm:p-6">
+								<h2 class="text-[1.45rem] font-semibold leading-tight text-[var(--c-text-secondary)]">
+									{{ room.name | translate }}
+								</h2>
+								<p class="mt-4 text-sm leading-7 text-[var(--c-text-muted)]">
+									{{ room.description | translate }}
+								</p>
+								<div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+									<p class="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--c-secondary)]">
+										{{ 'Rate' | translate }}
+										@if (room.price) {
+											<span>: {{ room.price | translate }}</span>
+										}
+									</p>
+									<a
+										class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-secondary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c-bg-primary)]"
+										href="tel:+380970000000"
+										[attr.aria-label]="'Call to book a room' | translate"
+									>
+										{{ 'Book now' | translate }}
+									</a>
+								</div>
+							</div>
+						</article>
+					}
+				</div>
+			</div>
+
+			<div class="border-t border-[var(--c-border)] px-4 py-6 sm:px-6 lg:px-8">
+				<div class="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+					<div class="rounded-[1.25rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-5 sm:p-6">
+						<p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]">
+							{{ 'Booking' | translate }}
+						</p>
+						<h2 class="mt-3 text-[1.5rem] font-semibold text-[var(--c-text-secondary)]">
+							{{ 'Contact us in the way that works for you' | translate }}
+						</h2>
+						<p class="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">
+							{{
+								'Use this block for phone, messengers, or a booking form. The demo version includes safe test contacts.'
+									| translate
+							}}
+						</p>
+					</div>
+
+					<div class="grid gap-4 sm:grid-cols-3">
+						@for (link of contactLinks; track link.label) {
+							<a
+								class="contact-card rounded-[1.25rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-5 text-left transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-secondary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c-bg-secondary)]"
+								[href]="link.href"
+								[target]="link.href.startsWith('http') || link.href.startsWith('viber:') ? '_blank' : null"
+								[rel]="link.href.startsWith('http') || link.href.startsWith('viber:') ? 'noreferrer nofollow' : null"
+							>
+								<p class="text-sm font-semibold text-[var(--c-text-secondary)]">
+									{{ link.label | translate }}
+								</p>
+								<p class="mt-2 text-sm leading-6 text-[var(--c-text-muted)]">
+									{{ link.description | translate }}
+								</p>
+							</a>
+						}
+					</div>
+				</div>
+			</div>
+
+			<div class="border-t border-[var(--c-border)] bg-[var(--c-bg-primary)]/70 px-4 py-8 sm:px-6 lg:px-8">
+				<img
+					class="mx-auto h-auto w-24 opacity-90 sm:w-28"
+					ngSrc="logo.png"
+					alt="Horeca"
+					width="720"
+					height="720"
+				/>
+			</div>
+		</section>
+	} @else {
+		<section
+			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined text-[28px]" aria-hidden="true">hotel</span>
+			</div>
+
+			<p class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]">
+				{{ 'Rooms' | translate }}
+			</p>
+			<h1 class="mt-2 text-xl font-semibold text-[var(--c-text-secondary)]">
+				{{ 'No rooms available at the moment' | translate }}
+			</h1>
+			<p class="mx-auto mt-2 max-w-[28rem] text-sm leading-6 text-[var(--c-text-muted)]">
+				{{ 'Check back later for room updates and availability.' | translate }}
+			</p>
+		</section>
+	}
+</main>

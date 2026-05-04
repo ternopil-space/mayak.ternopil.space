@@ -1,0 +1,47 @@
+<main class="mx-auto max-w-[var(--container)] px-3 pb-8 pt-3 sm:px-4 sm:pb-10">
+	<section
+		class="overflow-hidden rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+	>
+		<div
+			class="border-b border-[var(--c-border)] bg-[linear-gradient(135deg,rgba(197,61,61,0.14),rgba(217,168,88,0.08))] px-4 py-5 sm:px-5"
+		>
+			<h1
+				class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Navigation
+			</h1>
+		</div>
+
+		<div class="p-3 sm:p-4">
+			<div class="grid gap-3 sm:grid-cols-2">
+				@for (item of navItems; track item.route; let i = $index) {
+					<a
+						class="flex items-center justify-between gap-3 rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)] px-4 py-4 transition-transform duration-200 hover:-translate-y-0.5"
+						[routerLink]="item.route"
+					>
+						<div class="min-w-0">
+							<p
+								class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+							>
+								0{{ i + 1 }}
+							</p>
+							<h2
+								class="mt-2 text-lg font-semibold text-[var(--c-text-secondary)]"
+							>
+								{{ item.label | translate }}
+							</h2>
+						</div>
+
+						<span
+							class="material-symbols-outlined shrink-0 text-[24px] text-[var(--c-secondary)]"
+							aria-hidden="true"
+						>
+							{{ item.icon }}
+						</span>
+					</a>
+				}
+			</div>
+		</div>
+	</section>
+</main>

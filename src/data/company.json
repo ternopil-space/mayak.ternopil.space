@@ -1,0 +1,126 @@
+{
+	"_id": "demo",
+	"name": "Horeca",
+	"lang": "uk",
+	"locale": "uk_UA",
+	"siteUrl": "https://horeca.itkamianets.com",
+	"logo": "/logo.png",
+	"phone": "+38 097 000 00 00",
+	"email": "hello@horeca.itkamianets.com",
+	"address": "Кам'янець-Подільський, Україна",
+	"defaultSeo": {
+		"title": "Horeca | шаблон сайту для ресторану, кафе, готелю та доставки",
+		"description": "Horeca - готовий шаблон сайту для українських ресторанів, кафе, готелів, барів, доставки їжі та кейтерингу. Показуйте меню, фото, контакти, бронювання, події, акції та соціальні мережі на швидкому SEO-friendly сайті.",
+		"keywords": [
+			"Horeca",
+			"ресторан",
+			"кафе",
+			"готель",
+			"бар",
+			"доставка їжі",
+			"кейтеринг",
+			"меню",
+			"бронювання",
+			"події",
+			"акції",
+			"HoReCa сайт",
+			"сайт для ресторану"
+		],
+		"author": "Horeca",
+		"robots": "index, follow",
+		"image": "/logo.png",
+		"type": "website",
+		"twitterCard": "summary_large_image"
+	},
+	"pageSeo": {
+		"/": {
+			"title": "Меню закладу | Horeca",
+			"description": "Меню ресторану, кафе, готелю або доставки у шаблоні Horeca: сніданки, основні страви, напої, десерти та сезонні пропозиції в одному цифровому меню.",
+			"image": "/item/cappuccino.webp"
+		},
+		"/favorites": {
+			"title": "Улюблені страви | Horeca",
+			"description": "Перегляньте вибрані позиції меню у шаблоні Horeca та швидко поверніться до улюблених страв.",
+			"keywords": [
+				"улюблені страви",
+				"меню ресторану",
+				"Horeca"
+			],
+			"robots": "noindex, follow",
+			"image": "/item/homemade-syrnyky-with-sour-cream.webp"
+		},
+		"/rooms": {
+			"title": "Номери та проживання | Horeca",
+			"description": "Сторінка номерів і проживання для готелю, апарт-готелю або садиби у шаблоні Horeca.",
+			"image": "/room/room-1.webp"
+		},
+		"/navigation": {
+			"title": "Навігація по сайту | Horeca",
+			"description": "Швидкий доступ до всіх основних сторінок HoReCa сайту.",
+			"robots": "noindex, follow",
+			"image": "/gallery/demo-2.webp"
+		},
+		"/gallery": {
+			"title": "Галерея закладу | Horeca",
+			"description": "Фото інтер'єру, страв, подачі та атмосфери ресторану, кафе або готелю у шаблоні Horeca.",
+			"image": "/gallery/demo-1.webp"
+		},
+		"/dish": {
+			"title": "Сторінка страви | Horeca",
+			"description": "SEO-сторінка окремої страви з описом, складом і пов'язаними позиціями меню у шаблоні Horeca."
+		},
+		"/sales": {
+			"title": "Акції та спеціальні пропозиції | Horeca",
+			"description": "Показуйте сезонні акції, знижки, комбо-пропозиції та спеціальні умови для гостей на сторінці акцій.",
+			"image": "/gallery/demo-3.webp"
+		},
+		"/articles": {
+			"title": "Новини та статті | Horeca",
+			"description": "Публікуйте новини, історії команди, сезонні оновлення меню та корисні статті для гостей.",
+			"image": "/gallery/demo-2.webp"
+		},
+		"/quests": {
+			"title": "Квести та активності | Horeca",
+			"description": "Окрема сторінка для квестів, розваг і тематичних активностей у закладі або готелі.",
+			"image": "/gallery/demo-3.webp"
+		},
+		"/reviews": {
+			"title": "Відгуки гостей | Horeca",
+			"description": "Збирайте та показуйте відгуки гостей, рейтинги й соціальний доказ для ресторану, кафе або готелю.",
+			"image": "/gallery/demo-1.webp"
+		},
+		"/events": {
+			"title": "Події та святкування | Horeca",
+			"description": "Сторінка для афіші подій, банкетів, живої музики, дегустацій та приватних свят у HoReCa закладі.",
+			"image": "/gallery/demo-3.webp"
+		},
+		"/products": {
+			"title": "Товари та подарунки | Horeca",
+			"description": "Презентуйте подарункові набори, мерч, фермерські продукти або супутні товари на окремій сторінці.",
+			"image": "/item/cappuccino.webp"
+		},
+		"/jobs": {
+			"title": "Вакансії | Horeca",
+			"description": "Окрема SEO-сторінка для вакансій ресторану, кафе, готелю або сервісу доставки.",
+			"image": "/room/room-2.webp"
+		},
+		"/team": {
+			"title": "Команда закладу | Horeca",
+			"description": "Познайомте гостей із шефом, баристами, менеджерами та сервісною командою на сторінці команди.",
+			"image": "/gallery/demo-1.webp"
+		},
+		"/socials": {
+			"title": "Контакти та соціальні мережі | Horeca",
+			"description": "Телефон, email, адреса, месенджери та соціальні мережі HoReCa бізнесу на одній сторінці.",
+			"image": "/logo.png"
+		}
+	},
+	"structuredData": {
+		"type": "Restaurant",
+		"priceRange": "$$",
+		"servesCuisine": "HoReCa",
+		"addressLocality": "Kamianets-Podilskyi",
+		"addressCountry": "UA",
+		"sameAs": []
+	}
+}

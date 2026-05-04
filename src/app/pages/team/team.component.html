@@ -1,0 +1,91 @@
+<main class="mx-auto max-w-[var(--container)] px-3 pb-8 pt-3 sm:px-4 sm:pb-10">
+	@if (profiles().length) {
+		<section
+			class="overflow-hidden rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+		>
+			<div
+				class="border-b border-[var(--c-border)] bg-[linear-gradient(135deg,rgba(197,61,61,0.14),rgba(217,168,88,0.08))] px-4 py-5 sm:px-5"
+			>
+				<p
+					class="text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+					translate
+				>
+					Team
+				</p>
+			</div>
+
+			<div class="grid gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:grid-cols-3">
+				@for (profile of profiles(); track profile.name) {
+					<article
+						class="overflow-hidden rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-primary)]"
+					>
+						@if (profile.image) {
+							<img
+								class="h-64 w-full object-cover"
+								[ngSrc]="profile.image"
+								[alt]="profile.name | translate"
+								width="640"
+								height="640"
+							/>
+						}
+
+						<div class="space-y-3 p-4">
+							<div>
+								<h2 class="text-lg font-semibold text-[var(--c-text-secondary)]">
+									{{ profile.name | translate }}
+								</h2>
+								<p class="text-sm font-medium text-[var(--c-secondary)]">
+									{{ profile.role | translate }}
+								</p>
+								@if (profile.seniority) {
+									<p class="text-xs uppercase tracking-[0.14em] text-[var(--c-text-muted)]">
+										{{ profile.seniority | translate }}
+									</p>
+								}
+							</div>
+
+							@if (profile.description) {
+								<p class="text-sm leading-6 text-[var(--c-text-muted)]">
+									{{ profile.description | translate }}
+								</p>
+							}
+
+							@if (profile.tips) {
+								<p class="text-sm leading-6 text-[var(--c-text-secondary)]">
+									{{ profile.tips | translate }}
+								</p>
+							}
+						</div>
+					</article>
+				}
+			</div>
+		</section>
+	} @else {
+		<section
+			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"
+		>
+			<div
+				class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-secondary)]"
+			>
+				<span class="material-symbols-outlined text-[28px]" aria-hidden="true">group</span>
+			</div>
+
+			<p
+				class="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--c-secondary)]"
+				translate
+			>
+				Team
+			</p>
+
+			<h1 class="mt-2 text-xl font-semibold text-[var(--c-text-secondary)]" translate>
+				This page is currently empty
+			</h1>
+			<p
+				class="mx-auto mt-2 max-w-[28rem] text-sm leading-6 text-[var(--c-text-muted)]"
+				translate
+			>
+				Check back later for updates.
+			</p>
+		</section>
+	}
+</main>

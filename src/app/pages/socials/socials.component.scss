@@ -1,0 +1,41 @@
+:host {
+	display: block;
+	background: var(--c-bg-primary);
+	color: var(--c-text-primary);
+}
+
+.socials-shell {
+	background-image:
+		radial-gradient(circle at top left, color-mix(in srgb, var(--c-secondary) 14%, transparent), transparent 32%),
+		radial-gradient(circle at bottom right, color-mix(in srgb, var(--c-primary) 12%, transparent), transparent 28%);
+}
+
+.logo-panel {
+	background-image:
+		linear-gradient(155deg, color-mix(in srgb, var(--c-secondary) 10%, transparent), transparent 42%),
+		linear-gradient(325deg, color-mix(in srgb, var(--c-primary) 12%, transparent), transparent 46%);
+}
+
+.contact-card,
+.social-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.contact-card::after,
+.social-card::after {
+	content: '';
+	position: absolute;
+	inset: auto -2.5rem -2.5rem auto;
+	width: 7rem;
+	height: 7rem;
+	border-radius: 9999px;
+	background: color-mix(in srgb, var(--c-secondary) 8%, transparent);
+	filter: blur(10px);
+	pointer-events: none;
+}
+
+.icon-wrap {
+	color: #9dbed7;
+	background: color-mix(in srgb, #9dbed7 14%, var(--c-bg-secondary));
+}

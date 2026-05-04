@@ -1,0 +1,68 @@
+@let selectedCategories = filteredSelectedCategories();
+@let categories = filteredCategories();
+
+<section
+	class="sticky top-0 z-20 overflow-hidden rounded-[1.2rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)] shadow-[var(--shadow-sm)]"
+>
+	<div class="border-b border-[var(--c-border)] px-3 pt-2">
+		<div class="no-scrollbar flex gap-4 overflow-x-auto text-[15px] font-semibold">
+			@for (category of categories; track category.slug) {
+				<button
+					class="shrink-0 border-b-2 px-0 pb-2 transition-colors duration-200"
+					[class.border-[var(--c-secondary)]]="
+						selectedCategories[0]?.slug === category.slug
+					"
+					[class.text-[var(--c-secondary)]]="
+						selectedCategories[0]?.slug === category.slug
+					"
+					[class.border-transparent]="selectedCategories[0]?.slug !== category.slug"
+					[class.text-[var(--c-text-muted)]]="
+						selectedCategories[0]?.slug !== category.slug
+					"
+					(click)="dishCategoryService.selectCategory(category, category.children ?? [])"
+					type="button"
+				>
+					{{ category.name | translate }}
+				</button>
+			}
+		</div>
+	</div>
+
+	@for (selectedCategory of selectedCategories; track selectedCategory.slug; let level = $index) {
+		@if (selectedCategory.children?.length) {
+			<div
+				class="border-b border-[var(--c-border)] bg-[var(--c-bg-primary)]/50 px-2 py-2 last:border-b-0"
+			>
+				<div class="no-scrollbar flex gap-2 overflow-x-auto">
+					@for (childCategory of selectedCategory.children; track childCategory.slug) {
+						<button
+							class="shrink-0 rounded-[0.65rem] px-3 py-1.5 text-[13px] font-semibold transition-colors duration-200 shadow-[0_0_0_1px_var(--c-border)_inset]"
+							[class.bg-[var(--c-secondary)]]="
+								selectedCategories[level + 1]?.slug === childCategory.slug
+							"
+							[class.text-[var(--c-bg-primary)]]="
+								selectedCategories[level + 1]?.slug === childCategory.slug
+							"
+							[class.bg-[var(--c-bg-secondary)]]="
+								selectedCategories[level + 1]?.slug !== childCategory.slug
+							"
+							[class.text-[var(--c-secondary)]]="
+								selectedCategories[level + 1]?.slug !== childCategory.slug
+							"
+							(click)="
+								dishCategoryService.selectCategory(
+									childCategory,
+									selectedCategory.children ?? [],
+									selectedCategories
+								)
+							"
+							type="button"
+						>
+							{{ childCategory.name | translate }}
+						</button>
+					}
+				</div>
+			</div>
+		}
+	}
+</section>

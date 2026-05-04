@@ -1,0 +1,26 @@
+<section class="mt-3 space-y-4">
+	@for (section of sections(); track section.id) {
+		<section class="scroll-mt-28" [attr.id]="section.id">
+			<div class="mb-2 flex items-center gap-2 px-1">
+				<h2
+					class="shrink-0 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--c-text-secondary)]"
+				>
+					{{ section.name | translate }}
+				</h2>
+				<div class="h-px flex-1 border-t border-dashed border-[var(--c-border)]"></div>
+			</div>
+
+			@if (section.hasDescription) {
+				<p class="mb-2 px-1 text-[12px] leading-4 text-[var(--c-text-muted)]">
+					{{ section.description | translate }}
+				</p>
+			}
+
+			<div class="rounded-[1rem] border border-[var(--c-border)] bg-[var(--c-bg-secondary)]">
+				@for (dish of section.dishes; track dish.id) {
+					<app-menu-dish [dish]="dish" />
+				}
+			</div>
+		</section>
+	}
+</section>

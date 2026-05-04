@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Food",
+		"description": "",
+		"parent": "",
+		"slug": "food"
+	},
+	{
+		"name": "Drinks",
+		"description": "",
+		"parent": "",
+		"slug": "drinks"
+	},
+	{
+		"name": "Breakfasts",
+		"description": "Morning meals and light starters.",
+		"parent": "food",
+		"slug": "breakfasts"
+	},
+	{
+		"name": "Coffee",
+		"description": "Hot and cold coffee drinks.",
+		"parent": "drinks",
+		"slug": "coffee"
+	}
+]

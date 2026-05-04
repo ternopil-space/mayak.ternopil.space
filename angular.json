@@ -1,0 +1,115 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"cli": {
+		"packageManager": "npm",
+		"analytics": false
+	},
+	"newProjectRoot": "projects",
+	"projects": {
+		"app": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"changeDetection": "OnPush",
+					"type": "component",
+					"skipTests": true,
+					"style": "scss"
+				},
+				"@schematics/angular:directive": {
+					"type": "directive",
+					"skipTests": true
+				},
+				"@schematics/angular:service": {
+					"type": "service",
+					"skipTests": true
+				},
+				"@schematics/angular:guard": {
+					"skipTests": true
+				},
+				"@schematics/angular:interceptor": {
+					"skipTests": true
+				},
+				"@schematics/angular:pipe": {
+					"skipTests": true
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:application",
+					"options": {
+						"browser": "src/main.ts",
+						"tsConfig": "tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "src/assets"
+							},
+							{
+								"glob": "*.json",
+								"input": "src/i18n",
+								"output": "/i18n"
+							}
+						],
+						"styles": ["src/styles.scss"],
+						"server": "src/main.server.ts",
+						"outputMode": "server",
+						"security": {
+							"allowedHosts": []
+						},
+						"ssr": {
+							"entry": "src/server.ts"
+						}
+					},
+					"configurations": {
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular/build:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "app:build:production"
+						},
+						"development": {
+							"buildTarget": "app:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				}
+			}
+		}
+	}
+}
