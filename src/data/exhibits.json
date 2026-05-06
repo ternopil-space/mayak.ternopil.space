@@ -13,5 +13,10 @@
 		"slug": "horeca-hotel-reception-photo-2",
 		"src": "gallery/3.webp",
 		"alt": "Horeca hotel reception photo"
+	},
+	{
+		"slug": "horeca-bar-service-photo",
+		"src": "gallery/4.webp",
+		"alt": "Horeca bar service photo"
 	}
 ]
