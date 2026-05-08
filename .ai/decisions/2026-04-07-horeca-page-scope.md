@@ -1,21 +1,21 @@
-# HoReCa Page Scope
+﻿# Маяк Page Scope
 
 - Status: accepted
 - Date: 2026-04-07
 - Area: content
 - Owners: team
-- Related tasks: reusable HoReCa page model for similar projects
+- Related tasks: reusable Маяк page model for similar projects
 - Related files: AGENTS.md, .ai/content-pages.md, src/app/app.routes.ts
 - Supersedes:
 - Superseded by:
 
 ## Context
 
-This repository is not a generic company website. It targets HoReCa businesses, where visitors usually need to evaluate a place, its offers, its spaces, and its booking or contact options quickly. A reusable project template needs a durable decision about what page types these websites should normally cover.
+This repository is not a generic company website. It targets Маяк businesses, where visitors usually need to evaluate a place, its offers, its spaces, and its booking or contact options quickly. A reusable project template needs a durable decision about what page types these websites should normally cover.
 
 ## Decision
 
-Treat this repository as a HoReCa website template and cover the business through a practical set of public-facing pages.
+Treat this repository as a Маяк website template and cover the business through a practical set of public-facing pages.
 
 Typical page types for this category include:
 
@@ -41,16 +41,16 @@ Use list and detail page pairs when a business entity needs both overview and in
 
 ## Consequences
 
-- new HoReCa projects based on this repo should start by mapping the business into these page types before inventing custom structures
+- new Маяк projects based on this repo should start by mapping the business into these page types before inventing custom structures
 - route planning should reflect real visitor questions such as what can I order, what spaces exist, what room fits my needs, and how do I book or contact the venue
 - not every project needs every page type, but missing pages should be a product decision based on the business model, not an omission by default
 - list and detail pages should stay content-first and prerender-friendly
 
 ## Alternatives Considered
 
-Using a generic small-business page model was rejected because it under-specifies common HoReCa needs such as menu detail, event formats, and physical spaces.
+Using a generic small-business page model was rejected because it under-specifies common Маяк needs such as menu detail, event formats, and physical spaces.
 
-Treating pages like rooms and areas as ad hoc extras was rejected because they recur often enough in HoReCa projects to deserve first-class guidance.
+Treating pages like rooms and areas as ad hoc extras was rejected because they recur often enough in Маяк projects to deserve first-class guidance.
 
 ## Notes
 

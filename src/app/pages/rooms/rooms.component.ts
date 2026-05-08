@@ -1,4 +1,4 @@
-import { NgOptimizedImage } from '@angular/common';
+﻿import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { TranslatePipe } from '../../shared/translate.pipe';
 import { RoomService } from '../../feature/room/room.service';
@@ -43,13 +43,13 @@ export class RoomsComponent {
 		},
 		{
 			label: 'Chat on Viber',
-			href: 'https://example.com/horeca-demo/viber',
+			href: 'https://example.com/mayak/viber',
 			description: 'Demo chat for quick booking',
 		},
 		{
 			label: 'Chat on Telegram',
-			href: 'https://example.com/horeca-demo/telegram',
-			description: '@horeca_demo',
+			href: 'https://example.com/mayak/telegram',
+			description: '@Маяк_demo',
 		},
 	];
 }

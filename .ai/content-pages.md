@@ -1,8 +1,8 @@
-# Content And Page Patterns
+﻿# Content And Page Patterns
 
 ## Purpose
 
-This repo is for HoReCa business pages. Content should support real visitor needs quickly.
+This repo is for Маяк business pages. Content should support real visitor needs quickly.
 
 ## Typical Pages
 
@@ -61,7 +61,7 @@ If such pages exist, they should answer:
 
 ## CTA Principles
 
-Strong CTA examples for HoReCa:
+Strong CTA examples for Маяк:
 - reserve a table
 - view menu
 - call now

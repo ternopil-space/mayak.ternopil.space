@@ -1,4 +1,4 @@
-# Page-Local Content And Data Policy
+﻿# Page-Local Content And Data Policy
 
 - Status: accepted
 - Date: 2026-04-01
@@ -17,7 +17,7 @@ Most pages in this repo are static business pages, but without an explicit decis
 
 Keep content and simple business data close to the page by default.
 
-For typical HoReCa pages:
+For typical Маяк pages:
 
 - prefer page-local constants or local config
 - extract shared content structures only when reuse is real and repeated

@@ -1,4 +1,4 @@
-# Angular Landing HeRoCa industry Template (SSR + Prerender)
+﻿# Angular Landing Маяк industry Template (SSR + Prerender)
 
 Modern Angular 21 starter template for building fast landing pages with **SSR prerendering**, **TailwindCSS**, and **GitHub Pages deployment**.
 
@@ -602,7 +602,7 @@ Use these locations by default:
 Clone the default repository into a new folder with your project name (replace `PROJECT_NAME` with your project name):
 
 ```bash
-git clone https://github.com/ternopil-space/HoReCa.git PROJECT_NAME
+git clone https://github.com/ternopil-space/mayak.git PROJECT_NAME
 cd PROJECT_NAME
 npm i
 npm run start
@@ -610,7 +610,7 @@ npm run start
 
 ### What these commands do
 
-- `git clone https://github.com/ternopil-space/HoReCa.git PROJECT_NAME`
+- `git clone https://github.com/ternopil-space/mayak.git PROJECT_NAME`
   Downloads the template repository and creates a local folder named `PROJECT_NAME`.
 - `cd PROJECT_NAME`
   Opens the newly created project folder.
@@ -632,7 +632,7 @@ rm -rf .git
 git init
 git remote add origin https://github.com/ternopil-space/PROJECT_NAME.git
 git add .
-git commit -m "chore(init): bootstrap project from HoReCa template"
+git commit -m "chore(init): bootstrap project from Маяк template"
 ```
 
 `git remote add origin ...` connects your local repository to the remote GitHub repository so future `git push` and `git pull` commands know where your main project lives.
@@ -640,7 +640,7 @@ git commit -m "chore(init): bootstrap project from HoReCa template"
 Use a Conventional Commit message for the first commit as well. A good default is:
 
 ```text
-chore(init): bootstrap project from HoReCa template
+chore(init): bootstrap project from Маяк template
 ```
 
 # License

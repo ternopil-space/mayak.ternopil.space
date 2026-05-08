@@ -1,32 +1,32 @@
-[
+﻿[
 	{
-		"slug": "horeca-bar-service-photo",
+		"slug": "mayak-bar-service-photo",
 		"src": "gallery/1.webp",
-		"alt": "Horeca bar service photo"
+		"alt": "Маяк bar service photo"
 	},
 	{
-		"slug": "horeca-hotel-reception-photo-1",
+		"slug": "mayak-hotel-reception-photo-1",
 		"src": "gallery/2.webp",
-		"alt": "Horeca hotel reception photo"
+		"alt": "Маяк hotel reception photo"
 	},
 	{
-		"slug": "horeca-hotel-reception-photo-2",
+		"slug": "mayak-hotel-reception-photo-2",
 		"src": "gallery/3.webp",
-		"alt": "Horeca hotel reception photo"
+		"alt": "Маяк hotel reception photo"
 	},
 	{
-		"slug": "horeca-bar-service-photo",
+		"slug": "mayak-bar-service-photo",
 		"src": "gallery/4.webp",
-		"alt": "Horeca bar service photo"
+		"alt": "Маяк bar service photo"
 	},
 	{
-		"slug": "horeca-bar-service-photo",
+		"slug": "mayak-bar-service-photo",
 		"src": "gallery/5.webp",
-		"alt": "Horeca bar service photo"
+		"alt": "Маяк bar service photo"
 	},
 	{
-		"slug": "horeca-bar-service-photo",
+		"slug": "mayak-bar-service-photo",
 		"src": "gallery/6.webp",
-		"alt": "Horeca bar service photo"
+		"alt": "Маяк bar service photo"
 	}
 ]

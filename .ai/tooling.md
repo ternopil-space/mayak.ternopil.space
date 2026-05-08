@@ -1,4 +1,4 @@
-# Tooling And MCP Guide
+﻿# Tooling And MCP Guide
 
 ## Purpose
 
@@ -30,4 +30,4 @@ Prefer local code and repo guidance first. Reach for MCP when version-sensitive 
 
 ## Practical Reminder
 
-Do not overuse tools for simple static-page edits. For many HoReCa tasks, the nearest existing page and repo conventions are enough.
+Do not overuse tools for simple static-page edits. For many Маяк tasks, the nearest existing page and repo conventions are enough.
