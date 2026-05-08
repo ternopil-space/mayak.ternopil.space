@@ -1,27 +1,27 @@
 :root {
-	color-scheme: light;
+	color-scheme: dark;
 
 	/* brand / actions */
-	--c-primary: #6b3fa0; /* Фіолетовий акцент */
-	--c-primary-hover: #563281;
-	--c-secondary: #4a2b6d;
-	--c-secondary-hover: #382053;
+	--c-primary: #ffcc00; /* Яскраво-жовтий для кнопок */
+	--c-primary-hover: #e6b800;
+	--c-secondary: #d4a017;
+	--c-secondary-hover: #b88a0b;
 
 	/* surfaces */
-	--c-bg-primary: #b08d00; /* Темно-жовтий фон */
-	--c-bg-secondary: #c49e00; /* Трохи світліший жовтий для карток */
-	--c-bg-tertiary: #967800; /* Темніший жовтий для глибини */
+	--c-bg-primary: #1a0b2e; /* Глибокий темно-фіолетовий фон */
+	--c-bg-secondary: #25123d; /* Трохи світліший фіолетовий для блоків */
+	--c-bg-tertiary: #120820; /* Найтемніший фіолетовий */
 
 	/* content */
-	--c-text-primary: #2e004f; /* Глибокий фіолетовий текст */
-	--c-text-secondary: #42006d;
-	--c-text-muted: #5e4375;
-	--c-placeholder: #5e4375b3;
+	--c-text-primary: #f1c40f; /* Золотисто-жовтий текст */
+	--c-text-secondary: #ffdb4d;
+	--c-text-muted: #b399d4; /* Лавандовий для другорядного тексту (щоб не рябіло) */
+	--c-placeholder: #b399d4b3;
 
 	/* borders & elevation */
-	--c-border: #8a6e00;
-	--shadow-sm: 0 1px 2px rgba(46, 0, 79, 0.15);
-	--shadow-md: 0 10px 30px rgba(46, 0, 79, 0.25);
+	--c-border: #3d245d;
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+	--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.7);
 
 	/* typography */
 	--ff-base: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -59,36 +59,15 @@
 	--motion-slow: 0.4s;
 
 	/* focus */
-	--focus-ring: 0 0 0 3px rgba(107, 63, 160, 0.3);
+	--focus-ring: 0 0 0 3px rgba(255, 204, 0, 0.35);
 }
 
+/* Оскільки основна тема вже темна, зробимо "dark mode" ще контрастнішим */
 html[data-mode='dark'] {
-	color-scheme: dark;
-
-	/* brand / actions */
-	--c-primary: #a879e6;
-	--c-primary-hover: #bc99ed;
-	--c-secondary: #dcc8f7;
-	--c-secondary-hover: #ece1fb;
-
-	/* surfaces */
-	--c-bg-primary: #4d3d00; /* Дуже темний жовтий для темної теми */
-	--c-bg-secondary: #5e4a00;
-	--c-bg-tertiary: #3a2e00;
-
-	/* borders & elevation */
-	--c-border: #7a6100;
-	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
-	--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
-
-	/* content */
-	--c-text-primary: #e0ccff;
-	--c-text-secondary: #f3edff;
-	--c-text-muted: #b8a3d4;
-	--c-placeholder: #b8a3d4cc;
-
-	/* focus */
-	--focus-ring: 0 0 0 3px rgba(168, 121, 230, 0.35);
+	--c-bg-primary: #0d041a;
+	--c-bg-secondary: #1a0b2e;
+	--c-text-primary: #ffd700;
+	--c-border: #2a1544;
 }
 
 html[data-density='compact'] {
