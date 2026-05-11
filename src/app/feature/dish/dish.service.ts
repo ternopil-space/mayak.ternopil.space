@@ -27,7 +27,7 @@ export class DishService {
 	readonly dishes = signal<Dish[]>(_fallbackDishes);
 	readonly favoriteDishes = signal<string[]>(this._readFavoriteDishes());
 
-	togglerDishFavorite(slug: string) {
+	toggleDishFavorite(slug: string) {
 		const nextFavorites = this.favoriteDishes().includes(slug)
 			? this.favoriteDishes().filter((favoriteSlug) => favoriteSlug !== slug)
 			: [...this.favoriteDishes(), slug];

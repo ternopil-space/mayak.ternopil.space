@@ -77,6 +77,7 @@ export class App {
 	];
 
 	constructor() {
+		this._languageService.init();
 		this._canonicalService.initialize();
 		this._scrollService.initialize();
 

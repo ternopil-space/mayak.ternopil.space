@@ -25,7 +25,7 @@
 				[attr.aria-label]="
 					(isFavorite() ? 'Remove from favorites' : 'Add to favorites') | translate
 				"
-				(click)="dishService.togglerDishFavorite(_dish.slug)"
+				(click)="dishService.toggleDishFavorite(_dish.slug)"
 				type="button"
 			>
 				<span

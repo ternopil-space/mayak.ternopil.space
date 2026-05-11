@@ -24,6 +24,7 @@ export class MenuDishesComponent {
 	private readonly _dishService = inject(DishService);
 	private readonly _dishCategoryService = inject(DishCategoryService);
 	readonly selectedCategories = input<DishCategory[]>();
+	readonly showOnlyFavorites = input(false);
 
 	readonly categories = computed(() => {
 		const selectedCategories =
@@ -66,10 +67,14 @@ export class MenuDishesComponent {
 				.map((entry) => entry.slug),
 		];
 
-		return this._dishService
-			.dishes()
-			.filter((dish) => categorySlugs.includes(dish.categorySlug))
-			.map((dish) => this._toMenuDish(dish));
+		const favoriteDishes = this._dishService.favoriteDishes();
+		const dishes = this._dishService.dishes().filter((dish) => {
+			const matchesCategory = categorySlugs.includes(dish.categorySlug);
+			const matchesFavorite = !this.showOnlyFavorites() || favoriteDishes.includes(dish.slug);
+			return matchesCategory && matchesFavorite;
+		});
+
+		return dishes.map((dish) => this._toMenuDish(dish));
 	}
 
 	private _toMenuDish(dish: Dish): DishCard {

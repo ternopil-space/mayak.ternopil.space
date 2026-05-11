@@ -9,7 +9,10 @@
 			[filteredSelectedCategories]="filteredSelectedCategories()"
 		/>
 
-		<app-menu-dishes [selectedCategories]="filteredSelectedCategories()" />
+		<app-menu-dishes
+			[selectedCategories]="filteredSelectedCategories()"
+			[showOnlyFavorites]="showOnlyFavorites"
+		/>
 	} @else {
 		<section
 			class="rounded-[1.2rem] border border-dashed border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-4 py-10 text-center sm:px-6 sm:py-14"

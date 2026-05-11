@@ -6,12 +6,9 @@ import { MetaService } from '@wawjs/ngx-core';
 import { TranslatePipe } from '../../shared/translate.pipe';
 import { TranslateService } from '@wawjs/ngx-translate';
 import { companyProfile } from '../../feature/company/company.data';
-import {
-	findDishDetailBySlug,
-	rawDishDetails,
-} from '../../feature/dish/dish.data';
 import type { Dish, DishCategory } from '../../feature/dish/dish.interface';
 import { DishService } from '../../feature/dish/dish.service';
+import { DishCategoryService } from '../../feature/dish/dish-category.service';
 import { LanguageService } from '../../feature/language/language.service';
 import { buildAbsoluteUrl } from '../../seo/seo.utils';
 import { CanonicalService } from '../../services/canonical.service';
@@ -46,8 +43,6 @@ interface DishViewModel {
 	suggestions: DishSuggestion[];
 }
 
-const _fallbackEntry = _resolveFallbackEntry();
-
 @Component({
 	imports: [RouterLink, TranslatePipe],
 	templateUrl: './dish.component.html',
@@ -60,6 +55,7 @@ export class DishComponent {
 	private readonly _metaService = inject(MetaService);
 	private readonly _route = inject(ActivatedRoute);
 	private readonly _dishService = inject(DishService);
+	private readonly _dishCategoryService = inject(DishCategoryService);
 	private readonly _title = inject(Title);
 	private readonly _translateService = inject(TranslateService);
 	private readonly _slug = toSignal(this._route.paramMap, {
@@ -68,9 +64,13 @@ export class DishComponent {
 
 	protected readonly dish = computed(() => {
 		const slug = this._slug().get('slug');
-		const entry = slug ? (findDishDetailBySlug(slug) ?? _fallbackEntry) : _fallbackEntry;
+		const dishes = this._dishService.dishes();
+		const flatCategories = this._dishCategoryService.flatCategories();
 
-		return _buildDishViewModel(entry.category, entry.dish);
+		const dish = dishes.find((d) => d.slug === slug) ?? dishes[0];
+		const category = flatCategories.find((c) => c.slug === dish.categorySlug) ?? null;
+
+		return _buildDishViewModel(category, dish, dishes);
 	});
 	protected readonly isFavorite = computed(() =>
 		this._dishService.favoriteDishes().includes(this.dish().slug),
@@ -95,11 +95,15 @@ export class DishComponent {
 	}
 
 	protected toggleFavorite() {
-		this._dishService.togglerDishFavorite(this.dish().slug);
+		this._dishService.toggleDishFavorite(this.dish().slug);
 	}
 }
 
-function _buildDishViewModel(category: DishCategory | null, item: Dish): DishViewModel {
+function _buildDishViewModel(
+	category: DishCategory | null,
+	item: Dish,
+	allDishes: Dish[],
+): DishViewModel {
 	return {
 		id: item.slug,
 		slug: item.slug,
@@ -112,7 +116,7 @@ function _buildDishViewModel(category: DishCategory | null, item: Dish): DishVie
 		labels: item.labels,
 		price: item.price,
 		facts: _buildFacts(item, category),
-		suggestions: _buildSuggestions(item),
+		suggestions: _buildSuggestions(item, allDishes),
 	};
 }
 
@@ -147,17 +151,18 @@ function _buildFacts(item: Dish, category: DishCategory | null): DishFact[] {
 	];
 }
 
-function _buildSuggestions(currentItem: Dish): DishSuggestion[] {
+function _buildSuggestions(currentItem: Dish, allDishes: Dish[]): DishSuggestion[] {
 	const suggestedItems = currentItem.suggested
-		.map((slug) => findDishDetailBySlug(slug)?.dish)
+		.map((slug) => allDishes.find((d) => d.slug === slug))
 		.filter((item): item is Dish => Boolean(item));
 
 	return (
 		suggestedItems.length
 			? suggestedItems
-			: rawDishDetails
-					.map((entry) => entry.dish)
-					.filter((item) => item.slug !== currentItem.slug && item.categorySlug === currentItem.categorySlug)
+			: allDishes.filter(
+					(item) =>
+						item.slug !== currentItem.slug && item.categorySlug === currentItem.categorySlug,
+				)
 	)
 		.slice(0, 3)
 		.map((item) => ({
@@ -167,14 +172,6 @@ function _buildSuggestions(currentItem: Dish): DishSuggestion[] {
 			hasDescription: Boolean(item.description?.trim()),
 			price: item.price,
 		}));
-}
-
-function _resolveFallbackEntry() {
-	for (const entry of rawDishDetails) {
-		return entry;
-	}
-
-	throw new Error('No dishes available in menu data.');
 }
 
 function _buildDishMetaDescription(dish: DishViewModel): string {
