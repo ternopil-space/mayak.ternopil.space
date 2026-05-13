@@ -1,0 +1,21 @@
+:host {
+	display: block;
+	background: var(--c-bg-primary);
+	color: var(--c-text-primary);
+}
+
+.rooms-shell {
+	background-image:
+		radial-gradient(circle at top left, rgb(214 181 86 / 0.12), transparent 28%),
+		radial-gradient(circle at bottom right, rgb(160 116 42 / 0.1), transparent 24%);
+}
+
+.room-card a,
+.contact-card {
+	background:
+		linear-gradient(135deg, rgb(160 116 42 / 0.96), rgb(196 154 69 / 0.96));
+}
+
+.amenity-chip {
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45);
+}
