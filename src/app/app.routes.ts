@@ -19,6 +19,13 @@ export const routes: Routes = [
 			import('./pages/menu/menu.component').then((m) => m.MenuComponent),
 	},
 	{
+		path: 'rooms',
+		data: {
+			meta: buildRouteMeta('/rooms'),
+		},
+		loadComponent: () => import('./pages/rooms/rooms.component').then((m) => m.RoomsComponent),
+	},
+	{
 		path: 'navigation',
 		data: {
 			meta: buildRouteMeta('/navigation'),

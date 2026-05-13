@@ -1,27 +1,28 @@
 :root {
-	color-scheme: dark;
+	color-scheme: light dark;
 
+	/* --- LIGHT THEME (DEFAULT) --- */
 	/* brand / actions */
-	--c-primary: #ffcc00; /* Яскраво-жовтий для кнопок */
+	--c-primary: #ffcc00; 
 	--c-primary-hover: #e6b800;
 	--c-secondary: #d4a017;
 	--c-secondary-hover: #b88a0b;
 
 	/* surfaces */
-	--c-bg-primary: #1a0b2e; /* Глибокий темно-фіолетовий фон */
-	--c-bg-secondary: #25123d; /* Трохи світліший фіолетовий для блоків */
-	--c-bg-tertiary: #120820; /* Найтемніший фіолетовий */
+	--c-bg-primary: #ffffff; 
+	--c-bg-secondary: #f8f9fa; 
+	--c-bg-tertiary: #f1f3f5; 
 
 	/* content */
-	--c-text-primary: #f1c40f; /* Золотисто-жовтий текст */
-	--c-text-secondary: #ffdb4d;
-	--c-text-muted: #b399d4; /* Лавандовий для другорядного тексту (щоб не рябіло) */
-	--c-placeholder: #b399d4b3;
+	--c-text-primary: #212529; 
+	--c-text-secondary: #495057;
+	--c-text-muted: #6c757d; 
+	--c-placeholder: #adb5bd;
 
 	/* borders & elevation */
-	--c-border: #3d245d;
-	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-	--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.7);
+	--c-border: #dee2e6;
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
 
 	/* typography */
 	--ff-base: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -62,12 +63,31 @@
 	--focus-ring: 0 0 0 3px rgba(255, 204, 0, 0.35);
 }
 
-/* Оскільки основна тема вже темна, зробимо "dark mode" ще контрастнішим */
+/* --- DARK THEME (ORIGINAL) --- */
 html[data-mode='dark'] {
-	--c-bg-primary: #0d041a;
-	--c-bg-secondary: #1a0b2e;
-	--c-text-primary: #ffd700;
-	--c-border: #2a1544;
+	color-scheme: dark;
+    
+	/* brand / actions */
+	--c-primary: #ffcc00; 
+	--c-primary-hover: #e6b800;
+	--c-secondary: #d4a017;
+	--c-secondary-hover: #b88a0b;
+
+	/* surfaces */
+	--c-bg-primary: #1a0b2e; 
+	--c-bg-secondary: #25123d; 
+	--c-bg-tertiary: #120820; 
+
+	/* content */
+	--c-text-primary: #f1c40f; 
+	--c-text-secondary: #ffdb4d;
+	--c-text-muted: #b399d4; 
+	--c-placeholder: #b399d4b3;
+
+	/* borders & elevation */
+	--c-border: #3d245d;
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+	--shadow-md: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 html[data-density='compact'] {

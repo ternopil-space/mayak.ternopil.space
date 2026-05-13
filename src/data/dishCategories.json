@@ -18,9 +18,15 @@
 		"slug": "breakfasts"
 	},
 	{
-		"name": "Coffee",
+		"name": "Main dishes",
+		"description": "Hearty and filling primary courses.",
+		"parent": "food",
+		"slug": "main-dishes"
+	},
+	{
+		"name": "Cold drinks",
 		"description": "Hot and cold coffee drinks.",
 		"parent": "drinks",
-		"slug": "coffee"
+		"slug": "cold-drinks"
 	}
 ]

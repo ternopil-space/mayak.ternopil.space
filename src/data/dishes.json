@@ -15,7 +15,7 @@
 	},
 	{
 		"slug": "cappuccino",
-		"categorySlug": "coffee",
+		"categorySlug": "cold-drinks",
 		"name": "Cappuccino",
 		"description": "Espresso with steamed milk and foam.",
 		"price": 50,
@@ -26,5 +26,19 @@
 		"caloriesKcal": 110,
 		"portion": "350 ml",
 		"allergens": ["milk"]
+	},
+	{
+		"slug": "pork-steak-on-the-bone",
+		"categorySlug": "main-dishes",
+		"name": "Pork steak on the bone",
+		"description": "Juicy grilled pork steak served on the bone for extra flavor.",
+		"price": 280,
+		"labels": ["350 g"],
+		"fullDescription": "Juicy grilled pork steak served on the bone for extra flavor. Ingredients: Premium pork, secret spices, fresh herbs.",
+		"suggested": ["red-wine", "grilled-vegetables"],
+		"cookTimeMinutes": 25,
+		"caloriesKcal": 580,
+		"portion": "350 g",
+		"allergens": []
 	}
 ]

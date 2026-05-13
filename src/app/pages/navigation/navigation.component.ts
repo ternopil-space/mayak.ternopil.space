@@ -20,6 +20,7 @@ export class NavigationComponent {
 		{ label: 'Events', icon: 'event', route: '/events' },
 		{ label: 'Quests', icon: 'explore', route: '/quests' },
 
+		{ label: 'Rooms', icon: 'hotel', route: '/rooms' },
 		{ label: 'Sales', icon: 'sell', route: '/sales' },
 
 		{ label: 'Products', icon: 'shopping_bag', route: '/products' },

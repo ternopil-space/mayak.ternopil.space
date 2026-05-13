@@ -108,6 +108,7 @@ export class App {
 const _pageTitleKeys: Record<string, string> = {
 	'/': 'Menu',
 	'/favorites': 'Favorites',
+	'/rooms': 'Rooms',
 	'/navigation': 'Navigation',
 	'/gallery': 'Gallery',
 	'/sales': 'Sales',
