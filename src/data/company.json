@@ -49,11 +49,6 @@
 			"robots": "noindex, follow",
 			"image": "/item/homemade-syrnyky-with-sour-cream.webp"
 		},
-		"/rooms": {
-			"title": "Номери та проживання | Маяк",
-			"description": "Сторінка номерів і проживання для готелю, апарт-готелю або садиби у шаблоні Маяк.",
-			"image": "/room/room-1.webp"
-		},
 		"/navigation": {
 			"title": "Навігація по сайту | Маяк",
 			"description": "Швидкий доступ до всіх основних сторінок Маяк сайту.",
